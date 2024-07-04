@@ -107,11 +107,14 @@ jobs:
       run: |
         [ -e files ] && mv files $OPENWRT_PATH/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config
+        cat $CONFIG_FILE
+        cat $OPENWRT_PATH/.config
 
     - name: Download DL Package
       run: |
         cd $OPENWRT_PATH
         make defconfig
+        cat $OPENWRT_PATH/.config
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
