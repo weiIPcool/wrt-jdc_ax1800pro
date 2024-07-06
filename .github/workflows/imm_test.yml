@@ -1,4 +1,4 @@
-name: immortal-6.6-WIFI(EMMC)
+name: immtest
 
 on:
   workflow_dispatch:
