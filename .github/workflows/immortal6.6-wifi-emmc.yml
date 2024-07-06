@@ -116,8 +116,14 @@ jobs:
       run: |
         cd $OPENWRT_PATH
         make defconfig
-        cat $OPENWRT_PATH/.config
         make download -j8
+        find dl -size -1024c -exec ls -l {} \;
+        find dl -size -1024c -exec rm -f {} \;
+    
+    - name: Download DL Package2
+      run: |
+        cd $OPENWRT_PATH
+        make download -j8 || make download V=s -O
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
