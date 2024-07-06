@@ -121,8 +121,8 @@ jobs:
       id: compile
       run: |
         cd $OPENWRT_PATH
-        #mkdir -p files/etc/uci-defaults
-        #cp $GITHUB_WORKSPACE/scripts/init-settings.sh files/etc/uci-defaults/99-init-settings
+        mkdir -p files/etc/uci-defaults
+        cp $GITHUB_WORKSPACE/scripts/init-settings.sh files/etc/uci-defaults/99-init-settings
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "status=success" >> $GITHUB_OUTPUT
@@ -161,16 +161,17 @@ jobs:
       if: steps.compile.outputs.status == 'success' && env.FIRMWARE_RELEASE == 'true'
       uses: ncipollo/release-action@v1
       with:
-        name: R${{ env.DATE }} for ${{ env.FIRMWARE_TAG }}
+        name: Imm R${{ env.DATE }} for ${{ env.FIRMWARE_TAG }}
         allowUpdates: true
         makeLatest: false
         tag: ${{ env.FIRMWARE_TAG }}
         token: ${{ secrets.GITHUB_TOKEN }}
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
-          **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }}**
+          **This is Immortalwrt Firmware for ${{ env.FIRMWARE_TAG }}**
           ### 📒 固件信息
           - 这是带WIFI以及NSS且适用于EMMC的6.6内核固件
+          - ipq60xx原碼來自於breeze303，NSS韌體原碼來自於qosmio(詳見feeds.conf.default)
           - 💻 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 OpenWrt 固件
           - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
