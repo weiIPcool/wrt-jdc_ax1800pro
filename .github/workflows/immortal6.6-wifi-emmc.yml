@@ -69,7 +69,7 @@ jobs:
 
     - name: Generate Variables
       run: |
-        #cp $CONFIG_FILE $OPENWRT_PATH/.config
+        cp $CONFIG_FILE $OPENWRT_PATH/.config
         cd $OPENWRT_PATH
         make defconfig > /dev/null 2>&1
         SOURCE_REPO="$(echo $REPO_URL | awk -F '/' '{print $(NF)}')"
@@ -104,10 +104,14 @@ jobs:
     - name: Load Custom Configuration
       run: |
         [ -e files ] && mv files $OPENWRT_PATH/files
-        #[ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config
-        #cat $CONFIG_FILE
+        [ -e $CONFIG_FILE ] && cp -f $CONFIG_FILE $OPENWRT_PATH/.config
+    - name: Load Custom Configuration2
+      run: |
         cat $OPENWRT_PATH/.config
-
+    - name: Load Custom Configuration3
+      run: |
+        cat $CONFIG_FILE
+    
     - name: Download DL Package
       run: |
         cd $OPENWRT_PATH
