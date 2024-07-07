@@ -1,4 +1,4 @@
-name: H3c-nx30pro
+name: H3c-nx30pro2
 
 on:
   workflow_dispatch:
@@ -171,7 +171,7 @@ jobs:
       if: steps.compile.outputs.status == 'success' && env.FIRMWARE_RELEASE == 'true'
       uses: ncipollo/release-action@v1
       with:
-        name: Nx30 R${{ env.DATE }} for ${{ env.FIRMWARE_TAG }}
+        name: Nx30 mtkcfg R${{ env.DATE }} for ${{ env.FIRMWARE_TAG }}
         allowUpdates: true
         makeLatest: false
         tag: ${{ env.FIRMWARE_TAG }}
