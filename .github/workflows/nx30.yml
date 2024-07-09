@@ -113,7 +113,6 @@ jobs:
         cat $CONFIG_FILE
 
     - name: 使用nx30pro的高功率eeprom
-      if: github.event.inputs.EEPROM == 'true'
       run: |
         cp -v nx30pro_eeprom.bin openwrt/package/mtk/drivers/mt_wifi/files/mt7981-default-eeprom/MT7981_iPAiLNA_EEPROM.bin
   
