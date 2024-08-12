@@ -173,9 +173,11 @@ jobs:
           **This is OpenWrt Firmware for ${{ env.FIRMWARE_TAG }}**
           ### 📒 固件信息
           - 这是带WIFI以及NSS且适用于EMMC的6.6内核固件
-          - 💻 这是 ${{ env.FIRMWARE_TAG }} 平台使用的 OpenWrt 固件
-          - ⚽ 固件源码: ${{ env.REPO_URL }}
-          - 💝 源码分支: ${{ env.REPO_BRANCH }}
+          - ipq60xx原碼來自於Libwrt，NSS韌體原碼來自於qosmio (詳見feeds.conf.default)
+          - package/luci來自於Immortalwrt，其餘來源自openwrt主線 (https://github.com/LiBwrt-op/openwrt-6.x/blob/main/feeds.conf.default) 
+          - 💻 这是 IPQ60XX-6.6-WIFI(EMMC) 平台使用的 OpenWrt 固件
+          - ⚽ 固件源码: https://github.com/LiBwrt-op/openwrt-6.x
+          - 💝 源码分支: main
           - 🌐 默认地址: 192.168.1.1
           - 🔑 默认密码: password
           ### 🧊 固件版本
